@@ -5,11 +5,12 @@ import {AppController} from './app.controller';
 import {AppService} from './app.service';
 import {CModule} from './c/c.module';
 import {CoffeeService} from './services/c.service';
+import {TestController} from './test/test.controller';
 
 @Module({
   imports: [
     CModule,
-    TypeOrmModule.forRoot({
+    TypeOrmModule.forRoot({ // Database Connection Configuration
       type: 'postgres',
       host: 'localhost',
       port: 5432,
@@ -18,12 +19,13 @@ import {CoffeeService} from './services/c.service';
       database: 'postgres',
       autoLoadEntities: true,
       synchronize: true,
+      logging: ['query', 'error'], // Enable query and error logging
     }),
     DevtoolsModule.register({
       http: process.env.NODE_ENV !== 'production',
     }),
   ],
-  controllers: [AppController],
+  controllers: [AppController, TestController],
   providers: [AppService, CoffeeService],
 })
 export class AppModule {}

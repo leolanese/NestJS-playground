@@ -4,10 +4,7 @@
     "source.organizeImports": "always",
     "source.fixAll.eslint": "always"
   },
-  "eslint.validate": [
-    "javascript",
-    "typescript"
-  ],
+  "eslint.validate": ["javascript", "typescript"],
   "typescript.suggestionActions.enabled": true,
   "typescript.inlayHints.parameterNames.enable": false,
   "typescript.inlayHints.propertyDeclarationTypes.enabled": false,
@@ -120,16 +117,7 @@
   "workbench.sideBar.location": "left",
   "breadcrumbs.enabled": true,
   "search.useIgnoreFiles": true,
-  "prettier.disableLanguages": [
-    // Remove languages you want Prettier to handle
-    "html",
-    "scss",
-    "javascript",
-    "typescript"
-  ],
-  "colorize.colorized_colors": [
-    "HEXA"
-  ],
+  "colorize.colorized_colors": ["HEXA"],
   "window.titleBarStyle": "custom",
   "yaml.schemas": {
     "file:///Users/antoniyz/.vscode/extensions/atlassian.atlascode-2.9.1/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
@@ -190,7 +178,7 @@
     "list.activeSelectionBackground": "#39739d",
     "editorLineNumber.activeForeground": "#00aaff",
     "editor.background": "#1a1a1a",
-    "editor.colorDecorators": true,
+    "editor.colorDecorators": true
   },
   "editor.quickSuggestions": {
     "other": true,
@@ -366,5 +354,5 @@
   "debug.node.showUseWslIsDeprecatedWarning": true,
   "extensions.ignoreRecommendations": true,
   "editor.renderControlCharacters": false,
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 2
 }

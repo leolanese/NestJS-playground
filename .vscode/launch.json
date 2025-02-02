@@ -2,9 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Debug Program",
       "type": "node",
       "request": "launch",
-      "name": "Debug Program",
+
       "skipFiles": [
         "<node_internals>/**",
         "node_modules/**/*.js"
@@ -14,6 +15,20 @@
       "smartStep": true,
       "program": "${workspaceFolder}/src/main.ts",
       "console": "integratedTerminal",
+    },
+    {
+      "name": "ng serve",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start",
+      "url": "http://localhost:4200/"
+    },
+    {
+      "name": "ng test",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: test",
+      "url": "http://localhost:9876/debug.html"
     }
   ]
 }
