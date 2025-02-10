@@ -1,51 +1,54 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Coffeee } from './entities/c.entity';
+import {Injectable,NotFoundException} from '@nestjs/common';
+import {Product} from './entities/c.entity';
 
 
 @Injectable() // Marks this class as a provider
-export class CoffeeService {
-    private coffees: Coffeee[] = [
+export class ProductService {
+    private products: Product[] = [
         {
-            id: 1,
-            name: 'Black Coffee',
-            brand: 'Starbucks',
-            flavors: ['vanilla', 'caramel', 'mocha']
+          id: 1,
+          name: 'Leo',
+          brand: 'Nike',
+          flavors: ['dulce de leche', 'banana split']
         }
     ];
 
-    findAll() {
-        return this.coffees;
+    getAll() {
+      return this.products;
     }
 
-    findOne(id: string) {
-        return this.coffees.find(item => item.id === +id);
+    getOne(id: string) {
+      return this.products.find(item => item.id === +id);
     }
 
-    mayBeFindOne(id: string) {
-        const coffee = this.coffees.find(item => item.id === +id);
-        if (!coffee) {
-            throw new HttpException(`The Coffee #${id} not found`, HttpStatus.NOT_FOUND);
-        }
-        return coffee;
+    mayGetOne(id: string) {
+      const product = this.products.find(item => item.id === +id);
+
+      if (!product) {
+        throw new NotFoundException(`The Coffee #${id} not found`);
+      }
+      return product;
     }
 
     create(createCoffeeDto: any) {
-        this.coffees.push(createCoffeeDto);
-        return createCoffeeDto;
+      this.products.push(createCoffeeDto);
+      return createCoffeeDto;
     }   
 
     update(id: string, updateCoffeeDto: any) {
-        const existingCoffee = this.findOne(id);
+        const existingCoffee = this.getOne(id);
         if (existingCoffee) {
             // update the existing entity
         }
     }
     
-    remove(id: string) {
-        const coffeeIndex = this.coffees.findIndex(item => item.id === +id);
-        if (coffeeIndex >= 0) {
-            this.coffees.splice(coffeeIndex, 1);
+    delete(id: string) {
+        const productIndex = this.products.findIndex(item => item.id === +id);
+        if (productIndex >= 0) {
+            this.products.splice(productIndex, 1);
+            return true; // Successfully deleted
         }
+        return false; // Product not found
     }
     
 }

@@ -5,10 +5,9 @@ import {TypeOrmModule} from '@nestjs/typeorm';
 import {AppController} from './app.controller';
 import {AppService} from './app.service';
 import {CModule} from './c/c.module';
-import {CoffeeService} from './services/c.service';
+import {LeocoffeController} from './leocoffe/leocoffe.controller';
+import {ProductService} from './services/c.service';
 import {TestController} from './test/test.controller';
-import { ProductsModule } from './products/products.module';
-import { LeocoffeController } from './leocoffe/leocoffe.controller';
 
 @Module({
   imports: [
@@ -36,9 +35,8 @@ import { LeocoffeController } from './leocoffe/leocoffe.controller';
     DevtoolsModule.register({
       http: process.env.NODE_ENV !== 'production',
     }),
-    ProductsModule,
   ],
   controllers: [AppController, TestController, LeocoffeController],
-  providers: [AppService, CoffeeService],
+  providers: [AppService, ProductService],
 })
 export class AppModule {}

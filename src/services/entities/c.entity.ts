@@ -1,4 +1,4 @@
-export class Coffeee {
+export class Product {
     id: number;
     name: string;
     brand: string;

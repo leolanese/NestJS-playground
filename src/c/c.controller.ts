@@ -1,40 +1,41 @@
 import {Body,Controller,Delete,Get,HttpCode,HttpStatus,Param,Patch,Post} from '@nestjs/common';
 import {join} from 'path';
 import {Worker} from 'worker_threads';
-import {CoffeeService} from '../services/c.service';
+import {ProductService} from '../services/c.service';
 import {CreateCoffeeDto} from './dto/create-cofee.dto/create-cofee.dto';
 import {UpdateCoffeeDto} from './dto/udpate-cofee.dto/udpate-cofee.dto';
 
 @Controller('coffees')
 export class CoffeesController {
     
-    constructor(private   coffeeService: CoffeeService) {}
+    constructor(private productService: ProductService) {}
 
     // @Get()  
     // findAll(@Query() paginationQuery) {
-    //     return this.coffeeService.findAll();
+    //     return this.productService.findAll();
     // }
 
 
     // @Get(':id')
-    // mayBeFindOne(@Param('id') id: string) {
-    //     return this.coffeeService.mayBeFindOne(id);
+    // mayGetOne(@Param('id') id: string) {
+    //     return this.productService.mayGetOne(id);
     // }
 
     @Post()
     create(@Body() createCoffeeDto: CreateCoffeeDto ) {
       console.log(createCoffeeDto instanceof CreateCoffeeDto);
-        return this.coffeeService.create(createCoffeeDto);
+      
+      return this.productService.create(createCoffeeDto);
     }
 
     @Patch(':id')
     update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto) {
-        return this.coffeeService.update(id, updateCoffeeDto);
+        return this.productService.update(id, updateCoffeeDto);
     }
 
     @Delete(':id') 
     remove(@Param('id') id: string) {
-        return this.coffeeService.remove(id);
+        return this.productService.delete(id);
     }
 
     @Get('worker')
@@ -80,7 +81,8 @@ export class CoffeesController {
     @Get(':id')
     findOne(@Param('id') id: string) {
       console.log(typeof id);
-      return this.coffeeService.findOne(id);
+
+      return this.productService.getOne(id);
     }
     
     // @Get(':id')
@@ -119,8 +121,5 @@ export class CoffeesController {
     // remove(@Param('id') id: string) {
     //     return `POST: action REMOVES a #${id} coffee`;
     // }
-
-
-
 
 }

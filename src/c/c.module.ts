@@ -1,10 +1,10 @@
-import { Module } from '@nestjs/common';
-import { CoffeeService } from 'src/services/c.service';
-import { CoffeesController } from './c.controller';
+import {Module} from '@nestjs/common';
+import {ProductService} from 'src/services/c.service';
+import {CoffeesController} from './c.controller';
 
 @Module({
     controllers: [CoffeesController],
-    providers: [CoffeeService],
+    providers: [ProductService],
 
 })
 export class CModule {}
